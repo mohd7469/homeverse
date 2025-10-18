@@ -1254,8 +1254,6 @@ button, a { transition: var(--transition); }
    * HEADER
    */
 
-  .header-top { padding-block: 5px; }
-
   .header-top .wrapper { margin-left: auto; }
 
   .header-top-social-list { gap: 12px; }

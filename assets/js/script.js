@@ -147,42 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 </div>
 
-                <div class="card-footer">
-
-                  <div class="card-author">
-
-                    <figure class="author-avatar">
-                      <img src="${p.authorImage}" alt="${escapeHtml(p.authorName)}" class="w-100">
-                    </figure>
-
-                    <div>
-                      <p class="author-name">
-                        <a href="#">${escapeHtml(p.authorName)}</a>
-                      </p>
-
-                      <p class="author-title">${escapeHtml(p.authorTitle)}</p>
-                    </div>
-
-                  </div>
-
-                  <div class="card-footer-actions">
-
-                    <button class="card-footer-actions-btn">
-                      <ion-icon name="resize-outline"></ion-icon>
-                    </button>
-
-                    <button class="card-footer-actions-btn">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    <button class="card-footer-actions-btn">
-                      <ion-icon name="add-circle-outline"></ion-icon>
-                    </button>
-
-                  </div>
-
-                </div>
-
               </div>
             </li>
           `;

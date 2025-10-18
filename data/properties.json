@@ -2,6 +2,7 @@
   {
     "id": 1,
     "title": "New Apartment Nice View",
+    "type": "Apartment",
     "price": "$34,900",
     "period": "/Month",
     "image": "./assets/images/property-1.jpg",
@@ -21,6 +22,7 @@
   {
     "id": 2,
     "title": "Modern Apartments",
+    "type": "Apartment",
     "price": "$34,900",
     "period": "/Month",
     "image": "./assets/images/property-2.jpg",
@@ -40,6 +42,7 @@
   {
     "id": 3,
     "title": "Comfortable Apartment",
+    "type": "Apartment",
     "price": "$34,900",
     "period": "/Month",
     "image": "./assets/images/property-3.jpg",
@@ -59,6 +62,7 @@
   {
     "id": 4,
     "title": "Luxury villa in Rego Park",
+    "type": "Villa",
     "price": "$34,900",
     "period": "/Month",
     "image": "./assets/images/property-4.png",

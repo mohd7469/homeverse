@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Detail</title>
+
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="header" data-header>
+    <div class="header-bottom">
+      <div class="container">
+        <a href="index.html" class="logo">
+          <img src="./assets/images/logo.png" alt="Homeverse logo">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container" style="padding: 3rem 1rem;">
+      <div class="row">
+        <div class="col-md-8" id="property-details">
+          <!-- Property details will be injected here -->
+        </div>
+
+        <aside class="col-md-4">
+          <div class="card" style="padding:1rem">
+            <h3>Contact Agent</h3>
+
+            <form id="contact-form">
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input id="name" name="name" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" name="email" type="email" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input id="phone" name="phone" type="tel" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" rows="4" class="form-control" required></textarea>
+              </div>
+
+              <button type="submit" class="btn">Submit</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">&copy; 2022 <a href="#">codewithsadee</a>. All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Helper to read query param
+    function getQueryParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+
+    function escapeHtml(str) {
+      if (typeof str !== 'string') return str;
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const id = getQueryParam('id');
+      if (!id) {
+        document.getElementById('property-details').innerHTML = '<p>Property ID missing in URL.</p>';
+        return;
+      }
+
+      fetch('./data/properties.json')
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load properties.json');
+          return res.json();
+        })
+        .then(properties => {
+          const prop = properties.find(p => String(p.id) === String(id));
+          if (!prop) {
+            document.getElementById('property-details').innerHTML = '<p>Property not found.</p>';
+            return;
+          }
+
+          // Build details markup using same classes
+          const html = `
+            <div class="property-card">
+              <figure class="card-banner">
+                <img src="${prop.image}" alt="${escapeHtml(prop.title)}" class="w-100">
+              </figure>
+
+              <div class="card-content">
+                <div class="card-price"><strong>${escapeHtml(prop.price)}</strong> ${escapeHtml(prop.period || '')}</div>
+
+                <h2 class="h2 card-title">${escapeHtml(prop.title)}</h2>
+
+                <p class="card-text"><strong>Location:</strong> ${escapeHtml(prop.location)}</p>
+                <p class="card-text"><strong>Type:</strong> ${escapeHtml(prop.type || '')}</p>
+
+                <p class="card-text">${escapeHtml(prop.description)}</p>
+
+                <ul class="card-list">
+                  <li class="card-item"><strong>${prop.bedrooms}</strong> <ion-icon name="bed-outline"></ion-icon> <span>Bedrooms</span></li>
+                  <li class="card-item"><strong>${prop.bathrooms}</strong> <ion-icon name="man-outline"></ion-icon> <span>Bathrooms</span></li>
+                  <li class="card-item"><strong>${prop.sqft}</strong> <ion-icon name="square-outline"></ion-icon> <span>Square Ft</span></li>
+                </ul>
+
+              </div>
+            </div>
+          `;
+
+          document.getElementById('property-details').innerHTML = html;
+
+          // wire up contact form
+          const form = document.getElementById('contact-form');
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // basic validation (HTML required attributes are present, but double-check)
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !phone || !message) {
+              alert('Please fill all required fields.');
+              return;
+            }
+
+            // TODO: replace with your phone in international format without plus (e.g. 15551234567)
+            const whatsappNumber = 'YOUR_NUMBER_HERE';
+
+            const text = `Inquiry about *${prop.title}* (${prop.price})%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0A%0AMessage: ${encodeURIComponent(message)}`;
+
+            // open WhatsApp chat
+            const waUrl = `https://wa.me/${whatsappNumber}?text=${text}`;
+            window.location.href = waUrl;
+          });
+
+        })
+        .catch(err => {
+          console.error(err);
+          document.getElementById('property-details').innerHTML = '<p>Error loading property details.</p>';
+        });
+
+    });
+  </script>
+
+  <!-- ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

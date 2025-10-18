@@ -648,10 +648,6 @@ button, a { transition: var(--transition); }
 
 .property { padding-block: var(--section-padding); }
 
-.property-card {
-  border: 1px solid var(--alice-blue);
-  box-shadow: var(--shadow-2);
-}
 
 .property-card .card-banner {
   position: relative;

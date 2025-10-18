@@ -18,24 +18,24 @@ const navCloseBtn = document.querySelector("[data-nav-close-btn]");
 const navOpenBtn = document.querySelector("[data-nav-open-btn]");
 const navbarLinks = document.querySelectorAll("[data-nav-link]");
 
-const navElemArr = [overlay, navCloseBtn, navOpenBtn];
-
-/**
- * close navbar when click on any navbar link
- */
-
-for (let i = 0; i < navbarLinks.length; i++) { navElemArr.push(navbarLinks[i]); }
-
-/**
- * addd event on all elements for toggling navbar
- */
-
-for (let i = 0; i < navElemArr.length; i++) {
-  navElemArr[i].addEventListener("click", function () {
-    elemToggleFunc(navbar);
-    elemToggleFunc(overlay);
+// collect only existing elements to avoid calling addEventListener on null
+const navElemArr = [];
+if (overlay) navElemArr.push(overlay);
+if (navCloseBtn) navElemArr.push(navCloseBtn);
+if (navOpenBtn) navElemArr.push(navOpenBtn);
+if (navbarLinks && navbarLinks.length) {
+  navbarLinks.forEach(function (link) {
+    if (link) navElemArr.push(link);
   });
 }
+
+// add event on all elements for toggling navbar
+navElemArr.forEach(function (el) {
+  el.addEventListener("click", function () {
+    if (navbar) elemToggleFunc(navbar);
+    if (overlay) elemToggleFunc(overlay);
+  });
+});
 
 
 

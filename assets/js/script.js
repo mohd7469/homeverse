@@ -138,8 +138,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     <li class="card-item">
                       <strong>${p.sqft}</strong>
 
-                      <ion-icon name="square-outline"></ion-icon>
-
+                      <ion-icon name="cube-outline"></ion-icon>
+                      
                       <span>Square Ft</span>
                     </li>
 

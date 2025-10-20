@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                   <div class="banner-actions">
 
-                    <button class="banner-actions-btn">
+                    <button class="banner-actions-btn" data-map="${escapeHtml(p.mapLink || '')}">
                       <ion-icon name="location"></ion-icon>
 
                       <address>${escapeHtml(p.location)}</address>
@@ -144,6 +144,22 @@ document.addEventListener('DOMContentLoaded', function () {
           `;
         })
         .join('');
+
+      // Attach click handlers to location buttons that have a data-map attribute
+      const mapBtns = listEl.querySelectorAll('.banner-actions-btn[data-map]');
+      mapBtns.forEach(function (btn) {
+        const url = btn.getAttribute('data-map');
+        if (!url) return;
+        btn.addEventListener('click', function (e) {
+          // open in a new tab/window safely
+          try {
+            window.open(url, '_blank', 'noopener');
+          } catch (err) {
+            // fallback: navigate
+            window.location.href = url;
+          }
+        });
+      });
     })
     .catch((err) => {
       // keep original content if fetch fails, but log for debugging

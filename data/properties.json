@@ -13,7 +13,7 @@
     "bathrooms": 2,
     "sqft": 120,
     "description": "Spacious apartment located in the heart of Gold Block, North Town Residency Phase 1. Close to parks, markets, and main gate. Ideal for families seeking a modern lifestyle.",
-    "mapLink": "https://www.google.com/maps?q=24.9744,67.0598"
+    "mapLink": "https://maps.app.goo.gl/gvVQgq613gykkoqx9"
   },
   {
     "id": 2,
@@ -29,7 +29,7 @@
     "bathrooms": 2,
     "sqft": 80,
     "description": "Beautifully designed apartment in Paradise 1 Block featuring spacious rooms and easy access to commercial areas. Great investment opportunity in a growing community.",
-    "mapLink": "https://www.google.com/maps?q=24.9758,67.0621"
+    "mapLink": "https://maps.app.goo.gl/gvVQgq613gykkoqx9"
   },
   {
     "id": 3,
@@ -45,7 +45,7 @@
     "bathrooms": 2,
     "sqft": 100,
     "description": "A modern family apartment in Premium Block with high-quality finishes and excellent ventilation. Located near main boulevard with convenient access to schools and mosques.",
-    "mapLink": "https://www.google.com/maps?q=24.9739,67.0564"
+    "mapLink": "https://maps.app.goo.gl/gvVQgq613gykkoqx9"
   },
   {
     "id": 4,
@@ -61,6 +61,6 @@
     "bathrooms": 2,
     "sqft": 200,
     "description": "Elegant corner villa located in the prestigious Executive Block. Offers privacy, spacious interiors, and proximity to parks and main avenues — perfect for upscale living.",
-    "mapLink": "https://www.google.com/maps?q=24.9721,67.0615"
+    "mapLink": "https://maps.app.goo.gl/gvVQgq613gykkoqx9"
   }
 ]

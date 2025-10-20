@@ -9,12 +9,11 @@
     "badgeText": "For Sale",
     "badgeClass": "green",
     "location": "Gold Block, North Town Residency Phase 1",
-    "cameras": 4,
-    "films": 2,
     "bedrooms": 3,
     "bathrooms": 2,
     "sqft": 120,
-    "description": "Spacious apartment located in the heart of Gold Block, North Town Residency Phase 1. Close to parks, markets, and main gate. Ideal for families seeking a modern lifestyle."
+    "description": "Spacious apartment located in the heart of Gold Block, North Town Residency Phase 1. Close to parks, markets, and main gate. Ideal for families seeking a modern lifestyle.",
+    "mapLink": "https://www.google.com/maps?q=24.9744,67.0598"
   },
   {
     "id": 2,
@@ -26,12 +25,11 @@
     "badgeText": "For Sale",
     "badgeClass": "green",
     "location": "Paradise 1 Block, North Town Residency Phase 1",
-    "cameras": 4,
-    "films": 2,
     "bedrooms": 3,
     "bathrooms": 2,
     "sqft": 80,
-    "description": "Beautifully designed apartment in Paradise 1 Block featuring spacious rooms and easy access to commercial areas. Great investment opportunity in a growing community."
+    "description": "Beautifully designed apartment in Paradise 1 Block featuring spacious rooms and easy access to commercial areas. Great investment opportunity in a growing community.",
+    "mapLink": "https://www.google.com/maps?q=24.9758,67.0621"
   },
   {
     "id": 3,
@@ -43,12 +41,11 @@
     "badgeText": "For Sale",
     "badgeClass": "green",
     "location": "Premium Block, North Town Residency Phase 1",
-    "cameras": 4,
-    "films": 2,
     "bedrooms": 3,
     "bathrooms": 2,
     "sqft": 100,
-    "description": "A modern family apartment in Premium Block with high-quality finishes and excellent ventilation. Located near main boulevard with convenient access to schools and mosques."
+    "description": "A modern family apartment in Premium Block with high-quality finishes and excellent ventilation. Located near main boulevard with convenient access to schools and mosques.",
+    "mapLink": "https://www.google.com/maps?q=24.9739,67.0564"
   },
   {
     "id": 4,
@@ -60,11 +57,10 @@
     "badgeText": "For Sale",
     "badgeClass": "green",
     "location": "Executive Block, North Town Residency Phase 1",
-    "cameras": 4,
-    "films": 2,
     "bedrooms": 3,
     "bathrooms": 2,
     "sqft": 200,
-    "description": "Elegant corner villa located in the prestigious Executive Block. Offers privacy, spacious interiors, and proximity to parks and main avenues — perfect for upscale living."
+    "description": "Elegant corner villa located in the prestigious Executive Block. Offers privacy, spacious interiors, and proximity to parks and main avenues — perfect for upscale living.",
+    "mapLink": "https://www.google.com/maps?q=24.9721,67.0615"
   }
 ]

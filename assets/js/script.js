@@ -88,15 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </button>
 
                     <button class="banner-actions-btn">
-                      <ion-icon name="camera"></ion-icon>
-
-                      <span>${p.cameras}</span>
-                    </button>
-
-                    <button class="banner-actions-btn">
-                      <ion-icon name="film"></ion-icon>
-
-                      <span>${p.films}</span>
+                      <span>Karachi</span>
                     </button>
 
                   </div>

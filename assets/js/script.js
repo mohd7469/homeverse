@@ -55,8 +55,8 @@ const header = document.querySelector("[data-header]");
  * the existing .property-list so the markup and styling remains identical.
  */
 document.addEventListener('DOMContentLoaded', function () {
-  const listEl = document.querySelector('.property-list');
-  if (!listEl) return;
+  const propertyListEl = document.querySelector('.property-list');
+  if (!propertyListEl) return;
 
   fetch('./data/properties.json')
     .then((res) => {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then((properties) => {
       // build HTML using the same classes and structure as index.html
-      listEl.innerHTML = properties
+      propertyListEl.innerHTML = properties
         .map((p) => {
           return `
             <li>
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .join('');
 
       // Attach click handlers to location buttons that have a data-map attribute
-      const mapBtns = listEl.querySelectorAll('.banner-actions-btn[data-map]');
+      const mapBtns = propertyListEl.querySelectorAll('.banner-actions-btn[data-map]');
       mapBtns.forEach(function (btn) {
         const url = btn.getAttribute('data-map');
         if (!url) return;
@@ -164,6 +164,83 @@ document.addEventListener('DOMContentLoaded', function () {
     .catch((err) => {
       // keep original content if fetch fails, but log for debugging
       console.error('Error loading properties:', err);
+    });
+
+  const blogListEl = document.querySelector('.blog-list');
+  if (!blogListEl) return;
+  
+  fetch('./data/blogs.json')
+    .then((res) => {
+      if (!res.ok) throw new Error('Failed to fetch blogs.json');
+      return res.json();
+    })
+    .then((blogs) => {
+      blogListEl.innerHTML = blogs
+        .map((b) => {
+          return `
+          <li>
+            <div class="blog-card">
+
+              <figure class="card-banner">
+                <img src="${b.image}" alt="${escapeHtml(b.title)}" class="w-100">
+              </figure>
+
+              <div class="blog-content">
+
+                <div class="blog-content-top">
+
+                  <ul class="card-meta-list">
+
+                    <li>
+                      <a href="#" class="card-meta-link">
+                        <ion-icon name="pricetags"></ion-icon>
+
+                        <span>${escapeHtml(b.type || '')}</span>
+                      </a>
+                    </li>
+
+                  </ul>
+
+                  <h3 class="h3 blog-title">
+                    <a href="property.html?id=${encodeURIComponent(b.id)}">${escapeHtml(b.title)}</a>
+                  </h3>
+
+                </div>
+
+                <div class="blog-content-bottom">
+                  <div class="publish-date">
+                    <div class="d-flex gap-1 align-items-center">
+                      <ion-icon name="bed-outline"></ion-icon>
+                      ${escapeHtml(b.bedrooms || '')}
+                      <span>Bed</span>
+                    </div>
+                    
+                    <div class="d-flex gap-1 align-items-center">
+                      <ion-icon name="man-outline"></ion-icon>
+                      ${escapeHtml(b.bathrooms || '')}
+                      <span>Bath</span>
+                    </div>
+
+                    <div class="d-flex gap-1 align-items-center">
+                      <ion-icon name="cube-outline"></ion-icon>
+                      ${escapeHtml(b.sqft || '')}
+                      <span>Sq.Ft</span>
+                    </div>
+                  </div>
+
+                  <a href="property.html?id=${encodeURIComponent(b.id)}" class="read-more-btn">${escapeHtml(b.price)} ${escapeHtml(b.period || '')}</a>
+                </div>
+
+              </div>
+
+            </div>
+          </li>
+        `;
+        })
+        .join('');
+    })
+    .catch((err) => {
+      console.error('Error loading blogs:', err);
     });
 
   // small helper to avoid inserting raw HTML from JSON

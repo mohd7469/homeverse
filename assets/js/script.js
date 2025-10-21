@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   </div>
 
                   <h3 class="h3 card-title">
-                    <a href="property.html?id=${encodeURIComponent(p.id)}">${escapeHtml(p.title)}</a>
+                    <a href="property.html?id=${encodeURIComponent(p.id)}&type=properties">${escapeHtml(p.title)}</a>
                   </h3>
 
                   <p class="card-text">

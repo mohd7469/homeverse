@@ -23,42 +23,47 @@
   <div id="navbar"></div>
 
   <main class="bg-light">
+    
     <div id="property-details">
       <!-- Property details will be injected here -->
     </div>
-    <section class="card mb-4">
-      <div class="card-body p-4">
-        <h3>Contact Agent</h3>
 
-        <form id="contact-form">
-          <div class="row g-3">
-            <div class="col-12">
-              <label for="name" class="form-label">Full Name</label>
-              <input id="name" name="name" class="form-control" required>
-            </div>
+    <div class="container">
+       <section class="card mb-4">
+        <div class="card-body p-4">
+          <h3>Contact Agent</h3>
 
-            <div class="col-12">
-              <label for="email" class="form-label">Email</label>
-              <input id="email" name="email" type="email" class="form-control" required>
-            </div>
+          <form id="contact-form">
+            <div class="row g-3">
+              <div class="col-12">
+                <label for="name" class="form-label">Full Name</label>
+                <input id="name" name="name" class="form-control" required>
+              </div>
 
-            <div class="col-12">
-              <label for="phone" class="form-label">Phone Number</label>
-              <input id="phone" name="phone" type="tel" class="form-control" required>
-            </div>
+              <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" name="email" type="email" class="form-control" required>
+              </div>
 
-            <div class="col-12">
-              <label for="message" class="form-label">Message</label>
-              <textarea id="message" name="message" rows="4" class="form-control" required></textarea>
-            </div>
+              <div class="col-12">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input id="phone" name="phone" type="tel" class="form-control" required>
+              </div>
 
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary w-100">Submit</button>
+              <div class="col-12">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" rows="4" class="form-control" required></textarea>
+              </div>
+
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      </section>
     </div>
+
   </main>
 
   <div id="footer"></div>
@@ -101,29 +106,74 @@
 
           // Build details markup using same classes
           const html = `
-            <div class="property-card">
-              <figure class="card-banner">
-                <img src="${prop.image}" alt="${escapeHtml(prop.title)}" class="w-100">
+          <section class="about" id="about">
+            <div class="container">
+
+              <figure class="about-banner">
+                <img src="${escapeHtml(prop.image || './assets/images/about-banner-1.png')}" alt="${escapeHtml(prop.title)}">
+
+                <img src="./assets/images/about-banner-2.jpg" alt="House interior" class="abs-img">
               </figure>
 
-              <div class="card-content border-0">
-                <div class="card-price"><strong>${escapeHtml(prop.price)}</strong> ${escapeHtml(prop.period || '')}</div>
+              <div class="about-content">
 
-                <h2 class="h2 card-title">${escapeHtml(prop.title)}</h2>
+                <p class="section-subtitle">About Us</p>
 
-                <p class="card-text"><strong>Location:</strong> ${escapeHtml(prop.location)}</p>
-                <p class="card-text"><strong>Type:</strong> ${escapeHtml(prop.type || '')}</p>
+                <h2 class="h2 section-title">${escapeHtml(prop.title || 'The Leading Real Estate Marketplace.')}</h2>
 
-                <p class="card-text">${escapeHtml(prop.description)}</p>
+                <p class="about-text">
+                  ${escapeHtml(prop.description || 'We connect you with exceptional homes and exclusive properties, offering comfort, style, and trusted service in real estate marketing.')}
+                </p>
 
-                <ul class="card-list">
-                  <li class="card-item"><strong>${prop.bedrooms}</strong> <ion-icon name="bed-outline"></ion-icon> <span>Bedrooms</span></li>
-                  <li class="card-item"><strong>${prop.bathrooms}</strong> <ion-icon name="man-outline"></ion-icon> <span>Bathrooms</span></li>
-                  <li class="card-item"><strong>${prop.sqft}</strong> <ion-icon name="square-outline"></ion-icon> <span>Square Ft</span></li>
+                <ul class="about-list">
+
+                  <li class="about-item">
+                    <div class="about-item-icon">
+                      <ion-icon name="home-outline"></ion-icon>
+                    </div>
+
+                    <p class="about-item-text">Smart Home Design</p>
+                  </li>
+
+                  <li class="about-item">
+                    <div class="about-item-icon">
+                      <ion-icon name="leaf-outline"></ion-icon>
+                    </div>
+
+                    <p class="about-item-text">Beautiful Scene Around</p>
+                  </li>
+
+                  <li class="about-item">
+                    <div class="about-item-icon">
+                      <ion-icon name="wine-outline"></ion-icon>
+                    </div>
+
+                    <p class="about-item-text">Exceptional Lifestyle</p>
+                  </li>
+
+                  <li class="about-item">
+                    <div class="about-item-icon">
+                      <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    </div>
+
+                    <p class="about-item-text">Complete 24/7 Security</p>
+                  </li>
+
                 </ul>
 
+                <p class="callout">
+                  "From residential to commercial properties, we make every deal smooth, transparent, and successful"
+                </p>
+
+                <p class="card-text"><strong>Location:</strong> ${escapeHtml(prop.location || '')}</p>
+                <p class="card-text"><strong>Price:</strong> ${escapeHtml(prop.price || '')}</p>
+
+                <a href="#service" class="btn">Our Services</a>
+
               </div>
+
             </div>
+          </section>
           `;
 
           document.getElementById('property-details').innerHTML = html;
@@ -144,14 +194,20 @@
               return;
             }
 
-            // TODO: replace with your phone in international format without plus (e.g. 15551234567)
-            const whatsappNumber = 'YOUR_NUMBER_HERE';
+            // Prefill message including property info
+            const plainMessage = `Inquiry about ${prop.title || ''} (${prop.price || ''})\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage: ${message}`;
 
-            const text = `Inquiry about *${prop.title}* (${prop.price})%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0A%0AMessage: ${encodeURIComponent(message)}`;
-
-            // open WhatsApp chat
-            const waUrl = `https://wa.me/${whatsappNumber}?text=${text}`;
-            window.location.href = waUrl;
+            // Use centralized helper if available
+            if (typeof window.openWhatsApp === 'function') {
+              // openWhatsApp accepts (text, phone?) — phone optional
+              window.openWhatsApp(plainMessage);
+            } else {
+              // fallback: use wa.me with a configured number
+              const whatsappNumber = 'YOUR_NUMBER_HERE';
+              const text = encodeURIComponent(plainMessage);
+              const waUrl = `https://wa.me/${whatsappNumber}?text=${text}`;
+              window.location.href = waUrl;
+            }
           });
 
         })

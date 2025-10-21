@@ -1,10 +1,3 @@
-/**
- * whatsapp.js
- * Small helper to open a WhatsApp chat in a new tab with an optional prefilled message.
- * Usage in any page:
- *   openWhatsApp('Hello, I am interested in ...');
- *   openWhatsApp('Hi', '923001234567'); // override default number
- */
 (function () {
   'use strict';
 
@@ -46,7 +39,6 @@
 
 })();
 
-
 document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
       const baseURL = location.origin;
@@ -58,3 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }, 1000);
   });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+      const year = new Date().getFullYear();
+          const text = `© 2024 - ${year} Mir Marketing`;
+          document.querySelector(".copyright").textContent = text;
+    }, 1000);
+});

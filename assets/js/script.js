@@ -182,7 +182,9 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="blog-card">
 
               <figure class="card-banner">
-                <img src="${b.image}" alt="${escapeHtml(b.title)}" class="w-100">
+                <a href="property.html?id=${encodeURIComponent(b.id)}&type=blogs">
+                  <img src="${b.image}" alt="${escapeHtml(b.title)}" class="w-100">
+                </a>
               </figure>
 
               <div class="blog-content">

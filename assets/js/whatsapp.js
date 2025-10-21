@@ -45,3 +45,16 @@
   };
 
 })();
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+      const baseURL = location.origin;
+      document.querySelectorAll('.navbar-list .navbar-link').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href) {
+          link.setAttribute('href', `${baseURL}${href}`);
+        }
+      });
+    }, 1000);
+  });

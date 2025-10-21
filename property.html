@@ -82,12 +82,13 @@
 
     document.addEventListener('DOMContentLoaded', function () {
       const id = getQueryParam('id');
+      const type = getQueryParam('type');
       if (!id) {
         document.getElementById('property-details').innerHTML = '<p>Property ID missing in URL.</p>';
         return;
       }
 
-      fetch('./data/properties.json')
+      fetch(`./data/${type}.json`)
         .then(res => {
           if (!res.ok) throw new Error('Failed to load properties.json');
           return res.json();

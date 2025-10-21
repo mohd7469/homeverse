@@ -28,35 +28,30 @@
       <!-- Property details will be injected here -->
     </div>
 
-    <div class="container">
-       <section class="card mb-4">
+    <div class="container pb-5">
+       <section class="card">
         <div class="card-body p-4">
-          <h3>Contact Agent</h3>
+          <h2 class="mb-4">Contact Agent</h3>
 
           <form id="contact-form">
             <div class="row g-3">
               <div class="col-12">
-                <label for="name" class="form-label">Full Name</label>
-                <input id="name" name="name" class="form-control" required>
+                <label for="name" class="form-label required">Full Name</label>
+                <input id="name" name="name" class="form-control" placeholder="Enter Your Name" required>
               </div>
 
               <div class="col-12">
-                <label for="email" class="form-label">Email</label>
-                <input id="email" name="email" type="email" class="form-control" required>
+                <label for="phone" class="form-label required">Phone Number</label>
+                <input id="phone" name="phone" type="tel" placeholder="Enter Your Phone" class="form-control" required>
               </div>
 
               <div class="col-12">
-                <label for="phone" class="form-label">Phone Number</label>
-                <input id="phone" name="phone" type="tel" class="form-control" required>
+                <label for="budget" class="form-label required">Budget</label>
+                <textarea id="budget" name="budget" rows="4" placeholder="What is Your Budget.." class="form-control" required></textarea>
               </div>
 
               <div class="col-12">
-                <label for="message" class="form-label">Message</label>
-                <textarea id="message" name="message" rows="4" class="form-control" required></textarea>
-              </div>
-
-              <div class="col-12">
-                <button type="submit" class="btn btn-primary w-100">Submit</button>
+                <button type="submit" class="bg-dark text-white py-3 text-center btn-block rounded  w-100">Submit</button>
               </div>
             </div>
           </form>
@@ -106,7 +101,7 @@
 
           // Build details markup using same classes
           const html = `
-          <section class="about" id="about">
+          <section class="about pt-5 pb-2" id="about">
             <div class="container">
 
               <figure class="about-banner">
@@ -115,10 +110,7 @@
                 <img src="./assets/images/about-banner-2.jpg" alt="House interior" class="abs-img">
               </figure>
 
-              <div class="about-content">
-
-                <p class="section-subtitle">About Us</p>
-
+              <div class="about-content">                
                 <h2 class="h2 section-title">${escapeHtml(prop.title || 'The Leading Real Estate Marketplace.')}</h2>
 
                 <p class="about-text">
@@ -162,14 +154,10 @@
                 </ul>
 
                 <p class="callout">
-                  "From residential to commercial properties, we make every deal smooth, transparent, and successful"
+                  <strong>Price:</strong> ${escapeHtml(prop.price || '')} ${escapeHtml(prop.period || 'PKR')}
+                  <br/>
+                  <strong>Location:</strong> ${escapeHtml(prop.location || '')}
                 </p>
-
-                <p class="card-text"><strong>Location:</strong> ${escapeHtml(prop.location || '')}</p>
-                <p class="card-text"><strong>Price:</strong> ${escapeHtml(prop.price || '')}</p>
-
-                <a href="#service" class="btn">Our Services</a>
-
               </div>
 
             </div>
@@ -185,17 +173,16 @@
 
             // basic validation (HTML required attributes are present, but double-check)
             const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
-            const message = document.getElementById('message').value.trim();
+            const budget = document.getElementById('budget').value.trim();
 
-            if (!name || !email || !phone || !message) {
+            if (!name || !phone || !budget) {
               alert('Please fill all required fields.');
               return;
             }
 
             // Prefill message including property info
-            const plainMessage = `Inquiry about ${prop.title || ''} (${prop.price || ''})\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage: ${message}`;
+            const plainMessage = `Inquiry about ${prop.title || ''} (${prop.price || ''})\n\nName: ${name}\nPhone: ${phone}\n\nBudget: ${budget}`;
 
             // Use centralized helper if available
             if (typeof window.openWhatsApp === 'function') {

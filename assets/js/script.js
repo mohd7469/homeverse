@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 <figure class="card-banner">
 
-                  <a href="property.html?id=${encodeURIComponent(p.id)}&type=properties">
+                  <a href="listing.html?id=${encodeURIComponent(p.id)}&type=properties">
                     <img src="${p.image}" alt="${escapeHtml(p.title)}" class="w-100">
                   </a>
 
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   </div>
 
                   <h3 class="h3 card-title">
-                    <a href="property.html?id=${encodeURIComponent(p.id)}&type=properties">${escapeHtml(p.title)}</a>
+                    <a href="listing.html?id=${encodeURIComponent(p.id)}&type=properties">${escapeHtml(p.title)}</a>
                   </h3>
 
                   <p class="card-text">
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="blog-card">
 
               <figure class="card-banner">
-                <a href="property.html?id=${encodeURIComponent(b.id)}&type=projects">
+                <a href="listing.html?id=${encodeURIComponent(b.id)}&type=projects">
                   <img src="${b.image}" alt="${escapeHtml(b.title)}" class="w-100">
                 </a>
               </figure>
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   </ul>
 
                   <h3 class="h3 blog-title">
-                    <a href="property.html?id=${encodeURIComponent(b.id)}&type=projects">${escapeHtml(b.title)}</a>
+                    <a href="listing.html?id=${encodeURIComponent(b.id)}&type=projects">${escapeHtml(b.title)}</a>
                   </h3>
 
                 </div>
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                   </div>
 
-                  <a href="property.html?id=${encodeURIComponent(b.id)}" class="read-more-btn">${escapeHtml(b.price)} ${escapeHtml(b.period || '')}</a>
+                  <a href="listing.html?id=${encodeURIComponent(b.id)}" class="read-more-btn">${escapeHtml(b.price)} ${escapeHtml(b.period || '')}</a>
                 </div>
 
               </div>

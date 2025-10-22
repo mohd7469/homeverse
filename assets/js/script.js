@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   fetch('./data/properties.json')
     .then((res) => {
-      if (!res.ok) throw new Error('Failed to fetch properties.json');
+      if (!res.ok) throw new Error('Failed to fetch json');
       return res.json();
     })
     .then((properties) => {
@@ -166,23 +166,23 @@ document.addEventListener('DOMContentLoaded', function () {
       console.error('Error loading properties:', err);
     });
 
-  const blogListEl = document.querySelector('.blog-list');
-  if (!blogListEl) return;
+  const projectListEl = document.querySelector('.blog-list');
+  if (!projectListEl) return;
   
-  fetch('./data/blogs.json')
+  fetch('./data/projects.json')
     .then((res) => {
-      if (!res.ok) throw new Error('Failed to fetch blogs.json');
+      if (!res.ok) throw new Error('Failed to fetch json');
       return res.json();
     })
-    .then((blogs) => {
-      blogListEl.innerHTML = blogs
+    .then((projects) => {
+      projectListEl.innerHTML = projects
         .map((b) => {
           return `
           <li>
             <div class="blog-card">
 
               <figure class="card-banner">
-                <a href="property.html?id=${encodeURIComponent(b.id)}&type=blogs">
+                <a href="property.html?id=${encodeURIComponent(b.id)}&type=projects">
                   <img src="${b.image}" alt="${escapeHtml(b.title)}" class="w-100">
                 </a>
               </figure>
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   </ul>
 
                   <h3 class="h3 blog-title">
-                    <a href="property.html?id=${encodeURIComponent(b.id)}&type=blogs">${escapeHtml(b.title)}</a>
+                    <a href="property.html?id=${encodeURIComponent(b.id)}&type=projects">${escapeHtml(b.title)}</a>
                   </h3>
 
                 </div>
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .join('');
     })
     .catch((err) => {
-      console.error('Error loading blogs:', err);
+      console.error('Error loading projects:', err);
     });
 
   // small helper to avoid inserting raw HTML from JSON

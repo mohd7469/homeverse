@@ -90,7 +90,7 @@
 
       fetch(`./data/${type}.json`)
         .then(res => {
-          if (!res.ok) throw new Error('Failed to load properties.json');
+          if (!res.ok) throw new Error('Failed to load json');
           return res.json();
         })
         .then(properties => {
